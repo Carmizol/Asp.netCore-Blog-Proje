@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+       
+        #getchart {
+            margin: 0 auto; 
+            border: 2px solid #ccc; 
+            background-color: #f3f3f3; 
+            padding: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="getchart" style="width:800px; height:600px ">
+                <h2>Chart</h2>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] })
+        google.charts.setOnLoadCallback(DrawonLoad);
+
+        function DrawonLoad() {
+            $(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: '/Admin/Chart/CategoryChart/',
+                    success: function (chartsdata) {
+                        var Data = chartsdata.jsonlist;
+                        var data = new google.visualization.DataTable();
+
+                        data.addColumn('string', 'categoryName');
+                        data.addColumn('number', 'categoryCount');
+                        for (var i = 0; i < Data.length; i++) {
+                            data.addRow([Data[i].categoryName, Data[i].categoryCount]);
+                        }
+                        var chart = new google.visualization.PieChart(document.getElementById('getchart'));
+                        chart.draw(data, {
+                            title: "Google Chart",
+                            position: "top",
+                            fontSize: 16,
+                            colors: ['#90BE6D', '#F9C74F', '#F9844A', '#F8961E', '#F3722C']
+                        });
+                    }
+                })
+            })
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+

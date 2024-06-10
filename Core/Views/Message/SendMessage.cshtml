@@ -1,0 +1,25 @@
+﻿@model EntityLayer.Concrete.MessageRelation
+@{
+    ViewData["Title"] = "SendMessage";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<h1 style="color: rgb(255, 105, 180);">Mesaj Gönder</h1>
+
+<br />
+<br />
+@using (Html.BeginForm("SendMessage", "Message", FormMethod.Post))
+{
+    @Html.Label("Alıcı")
+    @* @Html.TextBoxFor(x => x.RecevierId, new { @class = "form-control" }) *@
+    <input type="text" class="form-control"/>
+    <br />
+    @Html.Label("Konu")
+    @Html.TextBoxFor(x => x.Subject, new { @class = "form-control" })
+    <br />
+    @Html.Label("Mesaj")
+    @Html.TextAreaFor(x => x.MessageDetail, 10, 3, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Gönder</button>
+}
+

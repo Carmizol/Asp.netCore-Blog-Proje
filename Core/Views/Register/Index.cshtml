@@ -1,0 +1,81 @@
+﻿@model EntityLayer.Concrete.Writer
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/HomPageLayout.cshtml";
+}
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<a href="~/lib/jquery/dist/jquery.min.map"></a>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<section class="main-content-w3layouts-agileits">
+
+    <div class="container">
+        <h3 class="tittle">Kayıt Ekranı</h3>
+        <div class="inner-sec">
+            <div class="login p-5 bg-light mx-auto mw-100">
+                @using (Html.BeginForm("Index", "Register", FormMethod.Post))
+                {
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="valdationCustom01">İsim Soyisim</label>
+                            @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.WriterName, "", new { @class = "text-info" })
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="valdationCustom02">Mail Addresi</label>
+                            @Html.TextBoxFor(x => x.WriterMail, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.WriterMail, "", new { @class = "text-info" })
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1 mb-2">Şifre</label>
+                        
+                            @Html.Password("WriterPassword", null, new { @class = "form-control", id = "passwordInput" })
+                            <input type="checkbox" class="form-check-input" id="showPassword">
+                            <label class="form-check-label" for="showPassword"> Şifreyi göster</label>
+
+                            @Html.ValidationMessageFor(x => x.WriterPassword, "", new { @class = "text-info" })
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="valdationCustom04">Görsel Giriniz</label>
+                            @Html.TextBoxFor(x => x.WriterImage, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.WriterImage, "", new { @class = "text-info" })
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary submit mb-4">Kayıt Ol</button>
+                    <p>
+                        <a href="#" id="bt1">✓ Tüm Şartları Okudum Kabul Ediyorum.</a>
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+    <br />
+    <script>
+        $(document).ready(function () {
+            $('#showPassword').change(function () {
+                var passwordInput = $('#passwordInput');
+                if ($(this).is(':checked')) {
+                    passwordInput.attr('type', 'text');
+                } else {
+                    passwordInput.attr('type', 'password');
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $('#bt1').click(function () {
+            swal("YazYazabilirsen'e Hoşgeldiniz. ","Üye, işbu “Üyelik Sözleşmesi”ni web sitesinin bulunduğu dijital ortamda elektronik olarak onay vermesi ile kabul ettiğini, söz konusu onay ile birlikte üyelik işleminin tamamlandığını ve işbu Sözleşme’nin yürürlüğe girdiğini, Sözleşme hükümlerinin tamamını okuduğunu, anladığını, onayladığını ve Site’de yer alan “Gizlilik Politikası” metninin işbu Sözleşme’nin ayrılmaz bir parçası ve eki olduğunu kabul, beyan ve taahhüt eder.");
+        });
+    </script>
+</section>
+

@@ -1,0 +1,127 @@
+﻿@model EntityLayer.Concrete.MessageRelation
+@{
+    ViewData["Title"] = "MessageDetails";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<h1 style="color: rgb(255, 105, 180);">Gelen Detay</h1>
+
+@*     @Html.Label("Mesaj İD")
+    @Html.TextBoxFor(x => x.MessageId, new { @class = "form-control" })
+    <br />
+    @Html.Label("Mesaj Başlığı")
+    @Html.TextBoxFor(x => x.Subject, new { @class = "form-control" })
+    <br />
+    @Html.Label("Mesaj Detayı")
+    @Html.TextAreaFor(x => x.MessageDetail,10,3, new { @class = "form-control" })
+    <br /> *@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail Detayı</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        .card {
+            margin-top: 50px;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: rgb(255, 105, 180);
+            color: #fff;
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .detail {
+            padding: 10px 20px;
+            font-size: 18px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+            .detail:last-child {
+                border-bottom: none;
+            }
+
+        .label {
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 0 0 15px 15px;
+        }
+
+            .content p {
+                font-size: 16px;
+                line-height: 1.6;
+            }
+
+        .btn-custom {
+            background-color: rgb(255, 105, 180);
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+
+            .btn-custom:hover {
+                background-color: rgb(255, 105, 180);
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <h5 class="card-header">Mail Detayı</h5>
+            <div class="content">
+                <div class="detail">
+                    <span class="label">Gönderen:</span>
+                    <span>@Model.MessageId</span>
+                </div>
+                <div class="detail">
+                    <span class="label">Konu:</span>
+                    <span>@Model.Subject</span>
+                </div>
+                <div class="detail">
+                    <span class="label">Tarih:</span>
+                    <span>@(((DateTime)Model.MessageDate).ToString("dd-MMM-yyyy"))</span>
+                </div>
+                <div class="detail">
+                    <span class="label">Saat:</span>
+                    <span>14:00</span>
+                </div>
+                <div class="detail">
+                    <span class="label">İçerik:</span>
+                    <p>@Model.MessageDetail</p>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-custom">Yanıtla</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button href="/Message/Inbox/" class="btn btn-gradient-primary btn-rounded btn-fw">Dön</button>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,68 @@
+﻿@using EntityLayer.Concrete
+@model List<Blog>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .product-box img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            max-height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3">
+                    <div class="ibox">
+                        <div class="ibox-content product-box">
+                            <div>
+                                <img src="@item.BlogImage">
+                            </div>
+                            <div class="product-desc">
+                                <span class="product-price">
+                                    @(((DateTime)item.BCreateDate).ToString("dd-MMM-yyyy"))
+                                </span>
+                                <small class="text-muted">@item.Category.CatergoryName</small>
+                                <a href="#" class="product-name"> @item.BlogTitle</a>
+                                <div class="small m-t-xs">
+                                    <p class="card-text mb-3">
+                                        @if (item.BlogContent != null)
+                                        {
+                                            @if (item.BlogContent.Length <= 80)
+                                            {
+                                                @item.BlogContent
+                                            }
+                                            else
+                                            {
+                                                @item.BlogContent.Substring(0, 80)
+                                            }
+                                        }
+                                        else
+                                        {
+                                            @:Blog içeriği bulunamadı.
+                                        }
+                                    </p>
+                                </div>
+                                <div class="m-t text-righ">
+                                    <a href="/Blog/BlogRead/@item.BlogId" class="btn btn-xs btn-outline btn-primary">Detaylar <i class="fa fa-long-arrow-right"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
+
+

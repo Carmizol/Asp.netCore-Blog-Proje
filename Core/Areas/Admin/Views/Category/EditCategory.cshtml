@@ -1,0 +1,22 @@
+﻿@model EntityLayer.Concrete.Category
+@{
+    ViewData["Title"] = "EditCategory";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1 style="color: rgb(255, 105, 180);">Category Düzenle</h1>
+
+@using (Html.BeginForm("EditCategory", "Category", FormMethod.Post))
+{
+    @Html.Label("İD")
+    @Html.TextBoxFor(x => x.CategoryId, new { @class = "form-control" })
+    <br />
+    @Html.Label("Kategori")
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.cl, new { @class = "form-control" })
+    <br />
+    @Html.Label("durumu")
+    @Html.TextBoxFor(x => x.CategoryStatus, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Güncelle</button>
+}
+

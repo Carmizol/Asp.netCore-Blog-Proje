@@ -1,0 +1,41 @@
+﻿@model UserUpdate
+@{
+    ViewData["Title"] = "WriterEditProfile";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <p class="card-description"> Yazar Profil Düzenleme </p>
+            <form class="forms-sample" method="post">
+                <div class="form-group">
+                    <label for="exampleInputName1">Ad Soyad</label>
+                    <input type="text" asp-for="namesurname" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail3">Kullanıcı Adı</label>
+                    <input type="text" asp-for="username" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail3">Mail</label>
+                    <input type="text" asp-for="mail" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword4">Parola</label>
+                    <input type="password" asp-for="password" class="form-control" /> 
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail3">Görsel</label>
+                    <input type="text" asp-for="ımageurl" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-gradient-primary mr-2">Kaydet</button>
+                <button class="btn btn-light">İptal</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
